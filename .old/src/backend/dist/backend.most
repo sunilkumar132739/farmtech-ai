@@ -1,0 +1,78 @@
+// Version: 3.0.0
+type ActivityEntry__497453047 =
+  {
+    eventType : ActivityEventType__364441545;
+    id : Nat;
+    metadata : Text;
+    timestamp : Int;
+    userId : Principal
+  };
+type ActivityEventType__364441545 =
+  {
+    #BestPriceSearch;
+    #CropDoctorUpload;
+    #FailedLogin;
+    #IrrigationToggle;
+    #Login;
+    #MarketplaceClick;
+    #ProfileUpdate
+  };
+type Data__791452850<K, V> =
+  {var count : Nat__490723111; kvs : [var ?(K, V)]};
+type Internal__8484328<K, V> =
+  {children : [var ?Node__46230540<K, V>]; data : Data__791452850<K, V>};
+type Leaf__809889148<K, V> = {data : Data__791452850<K, V>};
+type Map__158565046<K, V> = Map__297112838<K, V>;
+type Map__297112838<K, V> =
+  {var root : Node__46230540<K, V>; var size : Nat__490723111};
+type Map__605269027<K, V> = Map__158565046<K, V>;
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Node__46230540<K, V> =
+  {#internal : Internal__8484328<K, V>; #leaf : Leaf__809889148<K, V>};
+type Node__585180226<T> =
+  {
+    var next : ?Node__585180226<T>;
+    var previous : ?Node__585180226<T>;
+    value : T
+  };
+type OldUserProfile__416069324 =
+  {
+    createdAt : Int;
+    displayName : Text;
+    fullName : Text;
+    principal : Principal
+  };
+type UserProfile__1011704939 =
+  {
+    createdAt : Int;
+    displayName : Text;
+    fullName : Text;
+    isAdmin : Bool;
+    principal : Principal
+  };
+actor ({
+  stable activityCounter : {var value : Nat};
+  stable activityLog :
+    {
+      var back : ?Node__585180226<ActivityEntry__497453047>;
+      var front : ?Node__585180226<ActivityEntry__497453047>;
+      var size : Nat__490723111
+    };
+  stable deployer : Principal;
+  in users : Map__605269027<Principal, OldUserProfile__416069324>
+}, {
+  stable activityCounter : {var value : Nat};
+  stable activityLog :
+    {
+      var back : ?Node__585180226<ActivityEntry__497453047>;
+      var front : ?Node__585180226<ActivityEntry__497453047>;
+      var size : Nat__490723111
+    };
+  stable deployer : Principal;
+  stable users :
+    {
+      var root : Node__46230540<Principal, UserProfile__1011704939>;
+      var size : Nat__490723111
+    }
+}) ;

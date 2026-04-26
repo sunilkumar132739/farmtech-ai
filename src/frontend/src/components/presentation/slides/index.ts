@@ -1,0 +1,12 @@
+export { default as Slide01Title } from "./Slide01Title";
+export { default as Slide02Intro } from "./Slide02Intro";
+export { default as Slide03Problem } from "./Slide03Problem";
+export { default as Slide04Solution } from "./Slide04Solution";
+export { default as Slide05CurrentFeatures } from "./Slide05CurrentFeatures";
+export { default as Slide06AdvancedFeatures } from "./Slide06AdvancedFeatures";
+export { default as Slide07HowItWorks } from "./Slide07HowItWorks";
+export { default as Slide08TechStack } from "./Slide08TechStack";
+export { default as Slide09Benefits } from "./Slide09Benefits";
+export { default as Slide10CompetitiveAdv } from "./Slide10CompetitiveAdv";
+export { default as Slide11FutureScope } from "./Slide11FutureScope";
+export { default as Slide12Conclusion } from "./Slide12Conclusion";

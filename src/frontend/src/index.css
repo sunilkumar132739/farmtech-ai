@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Lora", serif;
+    --font-body: "Space Grotesk", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --radius: 0.625rem;
+
+    --background: 0.09 0.01 245;
+    --foreground: 0.94 0.01 245;
+    --card: 0.15 0.02 245;
+    --card-foreground: 0.92 0.01 245;
+    --popover: 0.12 0.01 245;
+    --popover-foreground: 0.93 0.01 245;
+
+    --primary: 0.35 0.13 118;
+    --primary-foreground: 0.94 0.01 245;
+
+    --secondary: 0.28 0.08 40;
+    --secondary-foreground: 0.92 0.01 245;
+    --muted: 0.25 0.02 245;
+    --muted-foreground: 0.65 0.01 245;
+
+    --accent: 0.85 0.25 86;
+    --accent-foreground: 0.12 0.02 245;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.94 0.01 245;
+
+    --border: 0.22 0.02 245;
+    --input: 0.18 0.02 245;
+    --ring: 0.85 0.25 86;
+
+    --chart-1: 0.35 0.13 118;
+    --chart-2: 0.28 0.08 40;
+    --chart-3: 0.85 0.25 86;
+    --chart-4: 0.65 0.15 90;
+    --chart-5: 0.55 0.12 100;
+
+    --sidebar: 0.12 0.01 245;
+    --sidebar-foreground: 0.92 0.01 245;
+    --sidebar-primary: 0.35 0.13 118;
+    --sidebar-primary-foreground: 0.94 0.01 245;
+    --sidebar-accent: 0.85 0.25 86;
+    --sidebar-accent-foreground: 0.12 0.02 245;
+    --sidebar-border: 0.22 0.02 245;
+    --sidebar-ring: 0.85 0.25 86;
+
+    /* Presentation specific tokens */
+    --slide-bg: 0.09 0.01 245;
+    --slide-card: 0.15 0.02 245;
+    --slide-highlight: 0.85 0.25 86;
+  }
+
+  .dark {
+    --background: 0.09 0.01 245;
+    --foreground: 0.94 0.01 245;
+    --card: 0.15 0.02 245;
+    --card-foreground: 0.92 0.01 245;
+    --popover: 0.12 0.01 245;
+    --popover-foreground: 0.93 0.01 245;
+
+    --primary: 0.35 0.13 118;
+    --primary-foreground: 0.94 0.01 245;
+
+    --secondary: 0.28 0.08 40;
+    --secondary-foreground: 0.92 0.01 245;
+    --muted: 0.25 0.02 245;
+    --muted-foreground: 0.65 0.01 245;
+
+    --accent: 0.85 0.25 86;
+    --accent-foreground: 0.12 0.02 245;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.94 0.01 245;
+
+    --border: 0.22 0.02 245;
+    --input: 0.18 0.02 245;
+    --ring: 0.85 0.25 86;
+
+    --chart-1: 0.35 0.13 118;
+    --chart-2: 0.28 0.08 40;
+    --chart-3: 0.85 0.25 86;
+    --chart-4: 0.65 0.15 90;
+    --chart-5: 0.55 0.12 100;
+
+    --sidebar: 0.12 0.01 245;
+    --sidebar-foreground: 0.92 0.01 245;
+    --sidebar-primary: 0.35 0.13 118;
+    --sidebar-primary-foreground: 0.94 0.01 245;
+    --sidebar-accent: 0.85 0.25 86;
+    --sidebar-accent-foreground: 0.12 0.02 245;
+    --sidebar-border: 0.22 0.02 245;
+    --sidebar-ring: 0.85 0.25 86;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("/assets/fonts/Lora.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass {
+    @apply backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl;
+  }
+
+  .glass-card {
+    @apply glass p-6 hover:bg-white/15 transition-smooth;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      oklch(0.09 0.01 245) 0%,
+      oklch(0.12 0.02 245) 100%
+    );
+  }
+
+  .accent-highlight {
+    @apply text-accent font-semibold;
+  }
+
+  /* Authentication & Layout Utilities */
+  .auth-container {
+    @apply min-h-screen w-full flex items-center justify-center gradient-bg;
+  }
+
+  .auth-card {
+    @apply glass-card max-w-md w-full mx-4 space-y-6;
+  }
+
+  .auth-input {
+    @apply w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-foreground placeholder:text-muted-foreground transition-smooth focus:outline-none focus:bg-white/15 focus:border-accent/50;
+  }
+
+  .auth-button {
+    @apply w-full px-4 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-smooth;
+  }
+
+  .auth-button-secondary {
+    @apply w-full px-4 py-3 glass text-foreground font-semibold rounded-lg transition-smooth border-primary/40 hover:bg-white/15;
+  }
+
+  .auth-button-ii {
+    @apply w-full flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl font-semibold text-base transition-smooth
+      bg-accent text-accent-foreground
+      hover:bg-accent/90
+      disabled:opacity-60 disabled:cursor-not-allowed
+      focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+    box-shadow: 0 4px 20px oklch(var(--accent) / 0.35);
+  }
+
+  .auth-button-ii:disabled {
+    box-shadow: none;
+  }
+
+  .sidebar-nav {
+    @apply fixed left-0 top-0 h-screen w-64 glass-card rounded-none backdrop-blur-xl bg-sidebar/95 border-r border-sidebar-border transform transition-transform duration-300 ease-out -translate-x-full md:translate-x-0 md:relative md:h-auto;
+  }
+
+  .sidebar-nav.active {
+    @apply translate-x-0;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 text-sidebar-foreground hover:bg-sidebar-primary/20 rounded-lg transition-smooth;
+  }
+
+  .sidebar-link.active {
+    @apply bg-sidebar-primary/30 text-sidebar-primary font-semibold;
+  }
+
+  .sidebar-toggle {
+    @apply inline-flex md:hidden items-center justify-center p-2 rounded-lg hover:bg-white/10 transition-smooth;
+  }
+
+  .welcome-banner {
+    @apply glass-card mb-6 space-y-2;
+  }
+
+  .welcome-text {
+    @apply text-2xl md:text-3xl font-display font-bold text-foreground;
+  }
+
+  .welcome-subtitle {
+    @apply text-muted-foreground;
+  }
+
+  /* Presentation slide utilities */
+  .slide-container {
+    @apply min-h-screen w-full flex items-center justify-center gradient-bg;
+  }
+
+  .slide-content {
+    @apply max-w-5xl mx-auto px-6 py-16 space-y-8;
+  }
+
+  .slide-heading {
+    @apply font-display text-5xl md:text-6xl font-bold text-foreground leading-tight;
+  }
+
+  .slide-subheading {
+    @apply font-display text-3xl md:text-4xl font-semibold text-foreground mt-4;
+  }
+
+  .slide-accent-text {
+    @apply text-accent font-semibold inline-block;
+  }
+
+  .slide-card {
+    @apply glass-card backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-8;
+  }
+
+  .slide-icon-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 gap-6 mt-8;
+  }
+
+  .slide-icon-card {
+    @apply slide-card flex flex-col items-center justify-center text-center;
+  }
+
+  .slide-bullet {
+    @apply text-lg text-foreground leading-relaxed mb-4 opacity-90;
+  }
+
+  .slide-button {
+    @apply inline-flex items-center gap-3 px-8 py-4 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl transition-smooth;
+  }
+
+  .slide-button-secondary {
+    @apply inline-flex items-center gap-3 px-8 py-4 glass border-primary/40 text-foreground font-semibold rounded-xl transition-smooth;
+  }
+
+  /* Animation stagger for presentation elements */
+  .animate-stagger-1 {
+    animation: slide-up 0.5s ease-out 0.1s both;
+  }
+
+  .animate-stagger-2 {
+    animation: slide-up 0.5s ease-out 0.2s both;
+  }
+
+  .animate-stagger-3 {
+    animation: slide-up 0.5s ease-out 0.3s both;
+  }
+
+  .animate-stagger-4 {
+    animation: slide-up 0.5s ease-out 0.4s both;
+  }
+}

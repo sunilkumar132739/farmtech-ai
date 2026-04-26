@@ -1,0 +1,42 @@
+type UserProfile = 
+ record {
+   createdAt: int;
+   displayName: text;
+   fullName: text;
+   isAdmin: bool;
+   "principal": principal;
+ };
+type ActivityFilter = 
+ record {
+   endTime: opt int;
+   eventType: opt ActivityEventType;
+   startTime: opt int;
+ };
+type ActivityEventType = 
+ variant {
+   BestPriceSearch;
+   CropDoctorUpload;
+   FailedLogin;
+   IrrigationToggle;
+   Login;
+   MarketplaceClick;
+   ProfileUpdate;
+ };
+type ActivityEntry = 
+ record {
+   eventType: ActivityEventType;
+   id: nat;
+   metadata: text;
+   timestamp: int;
+   userId: principal;
+ };
+service : {
+  getActivityLog: (filter: ActivityFilter) -> (vec ActivityEntry) query;
+  getAllUsers: () -> (vec UserProfile) query;
+  getUserProfile: () -> (opt UserProfile) query;
+  isAdmin: () -> (bool) query;
+  logActivity: (eventType: ActivityEventType, metadata: text) -> ();
+  promoteToAdmin: (target: principal) -> (bool);
+  removeAdmin: (target: principal) -> (bool);
+  updateUserProfile: (displayName: text, fullName: text) -> (UserProfile);
+}

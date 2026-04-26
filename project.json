@@ -1,0 +1,25 @@
+{
+  "overview": "FarmTech AI is a comprehensive smart agriculture platform for rural farmers, featuring personalized dashboards, AI crop disease detection, marketplace, IoT automation, multilingual support, and an admin dashboard for monitoring user activity across the platform.",
+  "features": [
+    "Admin dashboard with real-time activity timeline",
+    "Rolling 2,000-entry activity log with event filters",
+    "Admin role management — promote or remove admins",
+    "Activity tracking: logins, crop doctor, irrigation, marketplace, profile changes",
+    "Personalized farmer dashboard with IoT sensor data",
+    "AI Crop Doctor for disease detection",
+    "Marketplace with live price comparison",
+    "Internet Identity authentication",
+    "6-language multilingual support including Punjabi"
+  ],
+  "category": "agriculture",
+  "tags": [
+    "agriculture",
+    "admin-dashboard",
+    "iot",
+    "ai",
+    "multilingual",
+    "smart-farming",
+    "activity-tracking"
+  ],
+  "last_updated": "2026-04-26T19:06:05.881Z"
+}
